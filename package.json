@@ -1,10 +1,15 @@
 {
   "name": "Backend",
   "version": "1.0.0",
-  "description": "Save the Animals NAME Save the Animals PITCH Key Conservation is helping conservationists receive critical funding and increased global support through an app that provides real-time updates on day-to-day campaigns. We can stop global extinction if we utilize new technology and interact with supporters in ways that they want!",
+  "description": "Save the Animals BE Build Week",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "cross-env NODE_ENV=dev nodemon index.js",
+    "start": "node index.js"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "repository": {
     "type": "git",
