@@ -20,11 +20,13 @@ exports.up = async function(knex) {
     table.string("description", 255).notNullable()
     table.string("urgency_level").notNullable()
     table.string("location", 255).notNullable()
+    table.integer("fund_goal").notNullable()
   });
 
   await knex.schema.createTable("supporters", (table) => {
     table.increments("id")
-    table.text("username", 128).notNullable().unique()
+    table.string("email", 128).notNullable().unique()
+    table.string("password", 128).notNullable()
   });
 
   await knex.schema.createTable("donations", (table) => {
@@ -43,7 +45,10 @@ exports.up = async function(knex) {
       .notNullable()
       .references("id")
       .inTable("donations")
-    table.integer("campaign_id").notNullable().references("id").inTable("campaigns")
+    table.integer("campaign_id")
+      .notNullable()
+      .references("id")
+      .inTable("campaigns")
     table.primary(["supporter_id", "donation_id", "campaign_id"])
   });
 
@@ -70,7 +75,7 @@ exports.up = async function(knex) {
       .inTable("campaigns")
       .onDelete("CASCADE")
       .onUpdate("CASCADE")
-    table.integer("organization_id")
+    table.integer("org_id")
       .notNullable()
       .references("id")
       .inTable("organizations")
@@ -81,6 +86,7 @@ exports.up = async function(knex) {
     table.boolean("completed")
       .defaultTo(false)
       .notNullable()
+    table.primary(["campaign_id", "org_id"])
   })
 };
 
