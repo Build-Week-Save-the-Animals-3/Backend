@@ -20,7 +20,6 @@ exports.up = async function(knex) {
     table.string("description", 255).notNullable()
     table.string("urgency_level").notNullable()
     table.string("location", 255).notNullable()
-    table.integer("fund_goal").notNullable()
   });
 
   await knex.schema.createTable("supporters", (table) => {
