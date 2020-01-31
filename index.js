@@ -7,11 +7,13 @@ const port = process.env.PORT || 8080;
 server.use(helmet());
 server.use(express.json());
 
-server.get('/', (req, res, next) => {
+server.get('/', (req, res) => {
   res.json({
     message: 'Welcome to Save The Animals API'
   })
 });
+
+server.get('/')
 
 server.use((err, req, res, next) => {
   console.log('Error:', err)
