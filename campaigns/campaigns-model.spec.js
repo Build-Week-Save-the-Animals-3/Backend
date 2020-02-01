@@ -11,6 +11,11 @@ describe('campaigns model', () => {
     expect(res).toHaveLength(4)
   });
 
+  test('find camps by id', async () => {
+    const res = await campsModel.findCampById(1)
+    expect(res.title).toBe("Support The River Otters")
+  });
+
   test('find orgs', async () => {
     const res = await campsModel.findOrganizations()
     expect(res).toHaveLength(4)
@@ -21,10 +26,33 @@ describe('campaigns model', () => {
     expect(res).toHaveLength(4)
   });
 
-  test('find camps by id', async () => {
-    const res = await campsModel.findCampById(1)
-    expect(res.title).toBe("Support The River Otters")
+  test('find dons by id', async () => {
+    const res = await campsModel.findDonsById(1)
+    expect(res.amount).toBe(100)
   });
 
+  test('add camps', async () => {
+    await campsModel.addCampaigns({ title: 'test', description: 'testing', urgency_level: 'Critical', location: 'testing' })
+    const campaigns = await db('campaigns').select()
+    expect(campaigns).toHaveLength(5)
+  });
 
-})
+  test('add dons', async () => {
+    await campsModel.addDonations({ amount: 50 })
+    const donations = await db('donations').select()
+    expect(donations).toHaveLength(5)
+  });
+
+  test('update camps', async () => {
+    await campsModel.updateCampaign(1, { title: 'Support The River Otters', location: 'Indiana' })
+    const camp = await campsModel.findCampById(1)
+    expect(camp.title).toBe('Support The River Otters')
+    expect(camp.location).toBe('Indiana')
+  });
+
+  test('delete camps', async () => {
+    await campsModel.deleteCampaign(5)
+    const camps = await campsModel.findCampaigns()
+    expect(camps).toHaveLength(4)
+  });
+});

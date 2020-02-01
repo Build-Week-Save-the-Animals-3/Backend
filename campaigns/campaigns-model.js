@@ -26,16 +26,22 @@ function findDonsById(id) {
     .first()
 };
 
-function addCampaigns() {
-
+async function addCampaigns(campaign) {
+  const [id] = await db('campaigns').insert(campaign)
+  return findCampById(id)
 };
 
-function addDonations() {
-
+async function addDonations(donate) {
+  const [id] = await db('donations').insert(donate)
+  return findDonsById(id)
 };
 
-function updateCampaign() {
+async function updateCampaign(id, changes) {
+  await db('campaigns')
+    .where({ id })
+    .update(changes)
 
+  return findCampById(id)
 };
 
 function deleteCampaign(id) {
@@ -54,4 +60,4 @@ module.exports = {
   addDonations,
   updateCampaign,
   deleteCampaign,
-}
+};
