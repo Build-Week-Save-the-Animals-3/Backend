@@ -84,7 +84,7 @@ router.post('/donations', async (req, res, next) => {
 router.put('/campaigns/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
-    const updateCamp = await campModel.updateCampaign(id)
+    const updateCamp = await campModel.updateCampaign(id, req.body)
 
     if (updateCamp) {
       res.json(updateCamp)
@@ -100,7 +100,16 @@ router.put('/campaigns/:id', async (req, res, next) => {
 
 router.delete('/campaigns/:id', async (req, res, next) => {
   try {
+    const { id } = req.params;
+    const deleteCamp = await campModel.deleteCampaign(id)
 
+    if (deleteCamp) {
+      res.status(204).end()
+    } else {
+      res.status(401).json({
+        message: 'The campaign with the specified ID does not exist'
+      })
+    }
   } catch(err) {
     next(err)
   }
