@@ -20,6 +20,13 @@ exports.up = async function(knex) {
     table.string("description", 255).notNullable()
     table.string("urgency_level").notNullable()
     table.string("location", 255).notNullable()
+    table.date("deadline").notNullable()
+    table.integer("fund_goal")
+      .notNullable()
+      .unsigned()
+    table.boolean("completed")
+      .defaultTo(false)
+      .notNullable()
   });
 
   await knex.schema.createTable("supporters", (table) => {
@@ -78,13 +85,6 @@ exports.up = async function(knex) {
       .notNullable()
       .references("id")
       .inTable("organizations")
-    table.date("deadline").notNullable()
-    table.integer("fund_goal")
-      .notNullable()
-      .unsigned()
-    table.boolean("completed")
-      .defaultTo(false)
-      .notNullable()
     table.primary(["campaign_id", "org_id"])
   })
 };
