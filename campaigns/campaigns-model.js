@@ -3,7 +3,13 @@ const db = require('../data/db-config');
 // view, edit, delete existing campaigns - orgs
 // make donation to campaigns, find campaigns - supporters
 function findCampaigns() {
-  return db('campaigns').select()
+  const camps = db('campaigns').select()
+  return camps.map(camp => {
+    return {
+      ...camp,
+      completed: camp.completed === 0 ? false : true
+    };
+  })
 };
 
 function findOrganizations() {
