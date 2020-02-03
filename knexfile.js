@@ -1,20 +1,20 @@
-const sqlite = {
-  client: "sqlite3",
-  useNullAsDefault: true,
-  migrations: {
-    directory: "./data/migrations",
-  },
-  seeds: {
-    directory: "./data/seeds",
-  },
-  pool : {
-    afterCreate: (conn, done) => {
-      conn.run('PRAGMA foreign_keys = ON', done);
-    },
-  },
-};
+require('dotenv').config()
 
 module.exports = {
+  production: {
+    client: "pg",
+    connection: process.env.DATABASE_URL,
+    migrations: {
+      directory: "./data/migrations",
+    },
+    seeds: {
+      directory: "./data/seeds",
+    },
+    pool : {
+      min: 2,
+      max: 10,
+    },
+  },
   dev: {
     ...sqlite,
     connection: {
