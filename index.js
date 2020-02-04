@@ -8,6 +8,7 @@ const port = process.env.PORT || 8080;
 
 server.use(helmet());
 server.use(express.json());
+// add in auth and users router
 server.use('/api', campRouter);
 
 server.get('/', (req, res) => {

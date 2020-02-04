@@ -3,6 +3,8 @@ exports.up = async function(knex) {
   await knex.schema.createTable("organizations", (table) => {
     table.increments("id")
     table.string("name").notNullable().unique()
+    table.string("username", 128).notNullable().unique()
+    table.string("password", 128).notNullable()
   });
 
   await knex.schema.createTable("species", (table) => {
