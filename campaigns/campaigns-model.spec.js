@@ -32,7 +32,7 @@ describe('campaigns model', () => {
   });
 
   test('add camps', async () => {
-    await campsModel.addCampaigns({ title: 'test', description: 'testing', urgency_level: 'Critical', location: 'testing' })
+    await campsModel.addCampaigns({ title: 'test', description: 'testing', urgency_level: 'Critical', location: 'testing', deadline: "2020-02-23", fund_goal: 1, completed: 1 })
     const campaigns = await db('campaigns').select()
     expect(campaigns).toHaveLength(5)
   });
