@@ -14,6 +14,8 @@ exports.up = async function(knex) {
       .notNullable()
       .references("id")
       .inTable("organizations")
+      .onDelete("CASCADE")
+      .onUpdate("CASCADE")
   });
 
   await knex.schema.createTable("campaigns", (table) => {
@@ -49,14 +51,20 @@ exports.up = async function(knex) {
       .notNullable()
       .references("id")
       .inTable("supporters")
+      .onDelete("CASCADE")
+      .onUpdate("CASCADE")
     table.integer("donation_id")
       .notNullable()
       .references("id")
       .inTable("donations")
+      .onDelete("CASCADE")
+      .onUpdate("CASCADE")
     table.integer("campaign_id")
       .notNullable()
       .references("id")
       .inTable("campaigns")
+      .onDelete("CASCADE")
+      .onUpdate("CASCADE")
     table.primary(["supporter_id", "donation_id", "campaign_id"])
   });
 
