@@ -1,4 +1,10 @@
 
-exports.seed = async (knex) => {
-  await knex.raw("truncate camps_animals, sups_donations, donations, supporters, campaigns, species, organizations restart identity cascade")
-}
+const cleaner = require('knex-cleaner');
+
+exports.seed = function(knex) {
+  return cleaner.clean(knex, {
+    mode: 'truncate',
+    ignoreTables: 
+    ['knex_migrations', 'knex_migrations_lock']
+  });
+};
