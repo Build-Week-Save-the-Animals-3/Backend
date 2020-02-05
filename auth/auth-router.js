@@ -20,14 +20,14 @@ router.post('/register', async (req, res, next) => {
 router.post('/login', async (req, res, next) => {
 	try {
 		const { username, password } = req.body;
-		const org = await usersModel.findOrgsBy({ username }).first();
-		const pwValid = await bcrypt.compare(password, org.password);
+		const user = await usersModel.findOrgsBy({ username }).first();
+		const pwValid = await bcrypt.compare(password, user.password);
 
-		if (org && pwValid) {
+		if (user && pwValid) {
 			const token = jwt.sign(
 				{
-					subject: org.id,
-					username: org.username,
+					subject: user.id,
+					username: user.username,
 				},
 				secret.jwt,
 				{
@@ -53,7 +53,7 @@ router.get('/protected', restricted(), async (req, res, next) => {
 	try {
 		res.json({
 			message: 'You are authorized',
-			orgId: req.orgId,
+			userId: req.userId,
 		});
 	} catch (err) {
 		next(err);
