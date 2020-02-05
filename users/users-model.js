@@ -2,44 +2,44 @@ const bcrypt = require('bcryptjs');
 const db = require('../data/db-config');
 
 function findOrgs() {
-  return null
-};
+	return null;
+}
 
 function findSups() {
-  return null
-};
+	return null;
+}
 
 function findOrgsBy() {
-  return null
-};
+	return null;
+}
 
 function findSupsBy() {
-  return null
-};
+	return null;
+}
 
 function findOrgById(id) {
-  return null
-};
+	return null;
+}
 
 function findSupById(id) {
-  return null
-};
+	return null;
+}
 
 function addOrg(org) {
-  return null
-};
+	return null;
+}
 
 function addSup(sup) {
-  return null
-};
+	return null;
+}
 
 module.exports = {
-  findOrgs,
-  findSups,
-  findOrgsBy,
-  findSupsBy,
-  findOrgById,
-  findSupById,
-  addOrg,
-  addSup,
+	findOrgs,
+	findSups,
+	findOrgsBy,
+	findSupsBy,
+	findOrgById,
+	findSupById,
+	addOrg,
+	addSup,
 };
