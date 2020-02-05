@@ -7,7 +7,7 @@ function findCampaigns() {
 	return camps.map(camp => {
 		return {
 			...camp,
-			completed: camp.completed === 0 ? true : false,
+			completed: camp.completed === 0 ? false : true,
 		};
 	});
 }
