@@ -1,10 +1,9 @@
-
-exports.up = async function(knex) {
+exports.up = async function (knex) {
   await knex.schema.createTable("organizations", (table) => {
-    table.increments("id")
-    table.string("name").notNullable().unique()
-    table.string("username", 128).notNullable().unique()
-    table.string("password", 128).notNullable()
+    table.increments("id");
+    table.string("name").notNullable().unique();
+    table.string("username", 128).notNullable().unique();
+    table.string("password", 128).notNullable();
   });
 
   await knex.schema.createTable("species", (table) => {
@@ -85,7 +84,7 @@ exports.up = async function(knex) {
   });
 };
 
-exports.down = async function(knex) {
+exports.down = async function (knex) {
   await knex.schema.dropTableIfExists("camps_animals")
   await knex.schema.dropTableIfExists("sups_donations")
   await knex.schema.dropTableIfExists("donations")

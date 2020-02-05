@@ -2,9 +2,9 @@ const supertest = require('supertest');
 const server = require('./index');
 const db = require('./data/db-config');
 
-// beforeEach(async () => {
-//   await db.seed.run()
-// });
+beforeAll(async () => {
+  await db.seed.run()
+});
 
 test('welcome route', async () => {
   const res = await supertest(server).get('/')
