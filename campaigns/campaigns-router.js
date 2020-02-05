@@ -55,7 +55,7 @@ router.get('/donations/:id', async (req, res, next) => {
       res.json(don)
     } else {
       res.status(404).json({
-        message: 'The campaign with the specified ID does not exist'
+        message: 'The donation with the specified ID does not exist'
       })
     }
   } catch(err) {
