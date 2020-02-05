@@ -1,7 +1,7 @@
 const db = require('../data/db-config');
 const campsModel = require('./campaigns-model');
 
-beforeEach(async () => {
+beforeAll(async () => {
   await db.seed.run()
 });
 
