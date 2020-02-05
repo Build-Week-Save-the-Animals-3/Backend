@@ -33,19 +33,24 @@ function findDonsById(id) {
 }
 
 async function addCampaigns(campaign) {
-	const [id] = await db('campaigns').insert(campaign);
+	const [id] = await db('campaigns')
+		.insert(campaign)
+		.returning('*');
 	return findCampById(id);
 }
 
 async function addDonations(donate) {
-	const [id] = await db('donations').insert(donate);
+	const [id] = await db('donations')
+		.insert(donate)
+		.returning('*');
 	return findDonsById(id);
 }
 
 async function updateCampaign(id, changes) {
 	await db('campaigns')
 		.where({ id })
-		.update(changes);
+		.update(changes)
+		.returning('*');
 
 	return findCampById(id);
 }
