@@ -1,14 +1,14 @@
 const express = require('express');
-// const restricted = require("../middleware/restricted");
+const restricted = require('../middleware/restricted');
 const usersModel = require('./users-model');
 
 const router = express.Router();
 
-router.get('/', async (req, res, next) => {
+router.get('/', restricted(), async (req, res, next) => {
 	try {
-		const users = await usersModel.findOrgs();
+		const orgs = await usersModel.findOrgs();
 
-		res.json(users);
+		res.json(orgs);
 	} catch (err) {
 		next(err);
 	}
