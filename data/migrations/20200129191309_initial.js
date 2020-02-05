@@ -5,11 +5,22 @@ exports.up = async function(knex) {
 			.string('name')
 			.notNullable()
 			.unique();
+	});
+
+	await knex.schema.createTable('users', table => {
+		table.increments('id');
 		table
 			.string('username', 128)
 			.notNullable()
 			.unique();
 		table.string('password', 128).notNullable();
+		table
+			.integer('org_id')
+			.notNullable()
+			.references('id')
+			.inTable('organizations')
+			.onDelete('CASCADE')
+			.onUpdate('CASCADE');
 	});
 
 	await knex.schema.createTable('species', table => {
@@ -109,5 +120,6 @@ exports.down = async function(knex) {
 	await knex.schema.dropTableIfExists('supporters');
 	await knex.schema.dropTableIfExists('campaigns');
 	await knex.schema.dropTableIfExists('species');
+	await knex.schema.dropTableIfExists('users');
 	await knex.schema.dropTableIfExists('organizations');
 };

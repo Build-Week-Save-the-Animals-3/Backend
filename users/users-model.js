@@ -2,7 +2,8 @@ const bcrypt = require('bcryptjs');
 const db = require('../data/db-config');
 
 function findOrgs() {
-	return db("organizations");
+	return db('organizations')
+		.select('id', 'username');
 }
 
 function findSups() {
