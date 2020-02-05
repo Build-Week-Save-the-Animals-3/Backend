@@ -1,10 +1,10 @@
 
-exports.seed = async (knex) => {
-  await knex("camps_animals").truncate()
-  await knex("sups_donations").truncate()
-  await knex("donations").truncate()
-  await knex("supporters").truncate()
-  await knex("campaigns").truncate()
-  await knex("species").truncate()
-  await knex("organizations").truncate()
-}
+const cleaner = require('knex-cleaner');
+
+exports.seed = function(knex) {
+  return cleaner.clean(knex, {
+    mode: 'truncate',
+    ignoreTables: 
+    ['knex_migrations', 'knex_migrations_lock']
+  });
+};
