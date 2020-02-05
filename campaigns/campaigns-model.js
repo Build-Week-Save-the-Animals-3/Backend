@@ -3,67 +3,68 @@ const db = require('../data/db-config');
 // view, edit, delete existing campaigns - orgs
 // make donation to campaigns, find campaigns - supporters
 function findCampaigns() {
-  const camps = db('campaigns').select()
-  return camps.map(camp => {
-    return {
-      ...camp,
-      completed: camp.completed === 0 ? false : true
-    };
-  })
-};
+	const camps = db('campaigns').select();
+	return camps.map(camp => {
+		return {
+			...camp,
+			completed: camp.completed === 0 ? true : false,
+		};
+	});
+}
 
 function findOrganizations() {
-  return db('organizations').select()
-};
+	return db('organizations').select();
+}
 
 function findDonations() {
-  return db('donations').select()
-};
+	return db('donations').select();
+}
 
 function findCampById(id) {
-  return db('campaigns')
-    .where({ id })
-    .first()
-};
+	return db('campaigns')
+		.where({ id })
+		.first();
+}
 
 function findDonsById(id) {
-  return db('donations')
-    .where({ id })
-    .first()
-};
+	return db('donations')
+		.where({ id })
+		.first();
+}
 
-async function addCampaigns(campaign) {
-  const [id] = await db('campaigns').returning(campaign)
-  return findCampById(id)
-};
+function addCampaigns(campaign) {
+	return db('campaigns')
+		.insert(campaign)
+		.returning('*');
+}
 
-async function addDonations(donate) {
-  const [id] = await db('donations').returning(donate)
-  return findDonsById(id)
-};
+function addDonations(donate) {
+	return db('donations')
+		.insert(donate)
+		.returning('*');
+}
 
-async function updateCampaign(id, changes) {
-  await db('campaigns')
-    .where({ id })
-    .update(changes)
-
-  return findCampById(id)
-};
+function updateCampaign(id, changes) {
+	return db('campaigns')
+		.where({ id })
+		.update(changes)
+		.returning('*');
+}
 
 function deleteCampaign(id) {
-  return db('campaigns')
-    .where({ id })
-    .del()
-};
+	return db('campaigns')
+		.where({ id })
+		.del();
+}
 
 module.exports = {
-  findCampaigns,
-  findOrganizations,
-  findDonations,
-  findCampById,
-  findDonsById,
-  addCampaigns,
-  addDonations,
-  updateCampaign,
-  deleteCampaign,
+	findCampaigns,
+	findOrganizations,
+	findDonations,
+	findCampById,
+	findDonsById,
+	addCampaigns,
+	addDonations,
+	updateCampaign,
+	deleteCampaign,
 };
