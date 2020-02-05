@@ -33,12 +33,12 @@ function findDonsById(id) {
 };
 
 async function addCampaigns(campaign) {
-  const [id] = await db('campaigns').insert(campaign)
+  const [id] = await db('campaigns').returning(campaign)
   return findCampById(id)
 };
 
 async function addDonations(donate) {
-  const [id] = await db('donations').insert(donate)
+  const [id] = await db('donations').returning(donate)
   return findDonsById(id)
 };
 
