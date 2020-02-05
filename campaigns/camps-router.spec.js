@@ -6,6 +6,7 @@ beforeAll(async () => {
 	await db.seed.run();
 });
 
+describe()
 test('get camps', async () => {
 	const res = await supertest(server).get('/api/campaigns');
 	expect(res.status).toBe(200);
