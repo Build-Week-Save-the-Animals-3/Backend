@@ -10,8 +10,9 @@ const server = express();
 const port = process.env.PORT || 8080;
 
 server.use(helmet());
-server.use(express.json());
 server.use(cors());
+server.use(express.json());
+
 // add in auth and users router
 server.use('/auth', authRouter);
 server.use('/api', campRouter);
