@@ -7,7 +7,7 @@ const secret = require('../config/secret');
 
 const router = express.Router();
 
-router.post('/register', async (req, res, next) => {
+router.post('/users/register', async (req, res, next) => {
 	try {
 		const saved = await usersModel.addOrg(req.body);
 
@@ -17,7 +17,7 @@ router.post('/register', async (req, res, next) => {
 	}
 });
 
-router.post('/login', async (req, res, next) => {
+router.post('/users/login', async (req, res, next) => {
 	try {
 		const { username, password } = req.body;
 		const user = await usersModel.findOrgsBy({ username }).first();
@@ -31,12 +31,12 @@ router.post('/login', async (req, res, next) => {
 				},
 				secret.jwt,
 				{
-					expiresIn: '14d',
+					expiresIn: '5d',
 				}
 			);
 
 			res.status(200).json({
-				message: `Welcome ${org.username}!`,
+				message: `Welcome ${user.username}!`,
 				token: token,
 			});
 		} else {
@@ -49,7 +49,7 @@ router.post('/login', async (req, res, next) => {
 	}
 });
 
-router.get('/protected', restricted(), async (req, res, next) => {
+router.get('/users/protected', restricted(), async (req, res, next) => {
 	try {
 		res.json({
 			message: 'You are authorized',
