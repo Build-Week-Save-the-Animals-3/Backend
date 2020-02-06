@@ -10,4 +10,9 @@ describe('users model', () => {
 		const res = await usersModel.findOrgs();
 		expect(res).toHaveLength(4);
 	});
+
+	test('find sups', async () => {
+		const res = await usersModel.findSups();
+		expect(res).toHaveLength(2);
+	});
 });
