@@ -40,157 +40,157 @@
 ## GET (Find) Campaigns by ID- 
   - https://ptbw-sta-3.herokuapp.com/api/campaigns/1
 
-  # Success Response:
-  ```js
-    {
-      "id": 1, // integer
-      "title": "Support The River Otters", // string
-      "description": "Highly valued for their pelts", // string
-      "urgency_level": "Critical", // string
-      "location": "Indiana", // string
-      "deadline": "2025-05-19T00:00:00.000Z", // date
-      "fund_goal": 15000, // integer
-      "completed": false // boolean =  0 (false) or 1 (true)
-    }
-    ```
-  # Error Response:
-    ```js
-    {
-      "message": "The campaign with the specified ID does not exist"
-    }
-    ```
+# Success Response:
+```js
+  {
+    "id": 1, // integer
+    "title": "Support The River Otters", // string
+    "description": "Highly valued for their pelts", // string
+    "urgency_level": "Critical", // string
+    "location": "Indiana", // string
+    "deadline": "2025-05-19T00:00:00.000Z", // date
+    "fund_goal": 15000, // integer
+    "completed": false // boolean =  0 (false) or 1 (true)
+  }
+```
+# Error Response:
+```js
+  {
+    "message": "The campaign with the specified ID does not exist"
+  }
+```
 
 ## GET (Find) Organizations- 
   - https://ptbw-sta-3.herokuapp.com/api/organizations
 
-  # Success Response:
+# Success Response:
 ```js
-[
-  {
-    "id": 8,
-    "name": "klaus",
-    "password": "$2a$14$OVBlARPiSIZlWjSzXNQDHO91YoKmiY/F6UC42Vo5f2JUCXaMDb0Sq"
-  }
-]
+  [
+    {
+      "id": 8,
+      "name": "klaus",
+      "password": "$2a$14$OVBlARPiSIZlWjSzXNQDHO91YoKmiY/F6UC42Vo5f2JUCXaMDb0Sq"
+    }
+  ]
 ```
 
 ## GET (Find) Donations- 
   - https://ptbw-sta-3.herokuapp.com/api/donations
 
-  # Success Response:
-  ```js
-    [
-      {
-        "id": 1, 
-        "amount": 100 
-      },
-    ]
-  ```
-## GET (Find) Donations by ID- 
-  - https://ptbw-sta-3.herokuapp.com/api/donations/1
-
-  # Success Response:
-  ```js
+# Success Response:
+```js
+  [
     {
       "id": 1, 
       "amount": 100 
-    }
-  ```
+    },
+  ]
+```
+## GET (Find) Donations by ID- 
+  - https://ptbw-sta-3.herokuapp.com/api/donations/1
 
-  # Error Response:
-  ```js
-    {
-      "message": "The donation with the specified ID does not exist"
-    }
-  ```
+# Success Response:
+```js
+  {
+    "id": 1, 
+    "amount": 100 
+  }
+```
+
+# Error Response:
+```js
+  {
+    "message": "The donation with the specified ID does not exist"
+  }
+```
 
 ## POST (Create) Campaigns- 
   - https://ptbw-sta-3.herokuapp.com/api/campaigns
   - requires: JSON body below.
-  ```js
-    {
-      "title": "test1", // string
-      "animal": "test", // string
-      "description": "testing1", // string
-      "urgency_level": "Critical", // string
-      "location": "testing1", // string
-      "deadline": "2025-05-19", // date
-      "fund_goal": 13000, // integer
-      "completed": 0 // boolean =  0 (false) or 1 (true)
-    }
-  ```
-  # Success Response:
-  ```js
-    {
-      "id": 5, 
-      "title": "test1", 
-      "animal": "test", 
-      "description": "testing1", 
-      "urgency_level": "Critical", 
-      "location": "testing1", 
-      "deadline": "2025-05-19", 
-      "fund_goal": 130000, 
-      "completed": 0 
-    }
-  ```
+```js
+  {
+    "title": "test1", // string
+    "animal": "test", // string
+    "description": "testing1", // string
+    "urgency_level": "Critical", // string
+    "location": "testing1", // string
+    "deadline": "2025-05-19", // date
+    "fund_goal": 13000, // integer
+    "completed": 0 // boolean =  0 (false) or 1 (true)
+  }
+```
+# Success Response:
+```js
+  {
+    "id": 5, 
+    "title": "test1", 
+    "animal": "test", 
+    "description": "testing1", 
+    "urgency_level": "Critical", 
+    "location": "testing1", 
+    "deadline": "2025-05-19", 
+    "fund_goal": 130000, 
+    "completed": 0 
+  }
+```
   
 ## POST (Create) Donations- 
   - https://ptbw-sta-3.herokuapp.com/api/donations
   - requires: JSON body below.
-  ```js
-    {
-      "amount": 15, // integer
-    }
-  ```
-  # Success Response:
-  ```js
-    {
-      "id": 5, 
-      "amount": 15, 
-    }
-  ```
+```js
+  {
+    "amount": 15, // integer
+  }
+```
+# Success Response:
+```js
+  {
+    "id": 5, 
+    "amount": 15, 
+  }
+```
   
 ## PUT (Update) Campaigns by ID- 
   - https://ptbw-sta-3.herokuapp.com/api/campaigns/1
   - requires: JSON body below with updated item(s).
-  ```js
-    {
-      "title": "Support the River Otters", // string
-      "animal": "River Otters", // string
-      "description": "Highly valued for their pelts", // string
-      "urgency_level": "Critical", // string
-      "location": "Indiana", // string
-      "deadline": "2025-05-19", // date
-      "fund_goal": 15000, // integer
-      "completed": true // boolean = 0 (false) or 1 (true)
-    }
-  ```
+```js
+  {
+    "title": "Support the River Otters", // string
+    "animal": "River Otters", // string
+    "description": "Highly valued for their pelts", // string
+    "urgency_level": "Critical", // string
+    "location": "Indiana", // string
+    "deadline": "2025-05-19", // date
+    "fund_goal": 15000, // integer
+    "completed": true // boolean = 0 (false) or 1 (true)
+  }
+```
 
-  # Success Response
-  ```js
-    {
-      "title": "Support the River Otters",
-      "animal": "River Otters",
-      "description": "Highly valued for their pelts",
-      "urgency_level": "Critical",
-      "location": "Indiana",
-      "deadline": "2025-05-19",
-      "fund_goal": 15000,
-      "completed": true
-    }
-  ```
+# Success Response
+```js
+  {
+    "title": "Support the River Otters",
+    "animal": "River Otters",
+    "description": "Highly valued for their pelts",
+    "urgency_level": "Critical",
+    "location": "Indiana",
+    "deadline": "2025-05-19",
+    "fund_goal": 15000,
+    "completed": true
+  }
+```
 
 ## DELETE Campaigns- 
   - https://ptbw-sta-3.herokuapp.com/api/campaigns/1
 
-  # Success Response:
-    ```js
-      No body returned for response
-    ```
-  # Error Response:
-  {
-    "message": "The campaign with the specified ID does not exist"
-  }
+# Success Response:
+  ```js
+    No body returned for response
+  ```
+# Error Response:
+{
+  "message": "The campaign with the specified ID does not exist"
+}
 
 ## Save the Animals
 # PITCH
