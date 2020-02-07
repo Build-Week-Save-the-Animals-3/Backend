@@ -73,15 +73,15 @@ router.post('/supps/register',  async (req, res, next) => {
 
 router.post('/supps/login', async (req, res, next) => {
 	try {
-		const { email, password } = req.body;
-		const supps = await suppsModel.findBy({ email }).first();
+		const { name, password } = req.body;
+		const supps = await suppsModel.findBy({ name }).first();
 		const pwValid = await bcrypt.compare(password, supps.password);
 
 		if (supps && pwValid) {
 			const token = jwt.sign(
 				{
 					subject: supps.id,
-					email: supps.email,
+					name: supps.name,
 				},
 				secret.jwt,
 				{
@@ -90,7 +90,7 @@ router.post('/supps/login', async (req, res, next) => {
 			);
 
 			res.status(200).json({
-				message: `Welcome ${supps.email}!`,
+				message: `Welcome ${supps.name}!`,
 				token: token,
 			});
 		} else {
