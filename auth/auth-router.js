@@ -49,7 +49,7 @@ router.post('/login', async (req, res, next) => {
 	}
 });
 
-router.get('/users/protected', restricted(), async (req, res, next) => {
+router.get('/protected', restricted(), async (req, res, next) => {
 	try {
 		res.json({
 			message: 'You are authorized',
