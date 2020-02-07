@@ -11,8 +11,8 @@ function findBy(sup) {
 		.select('id', 'email', 'password');
 }
 
-function add(sup) {
-	sup.password = bcrypt.hash(sup.password, 14);
+async function add(sup) {
+	sup.password = await bcrypt.hash(sup.password, 14);
 	// sqlite
 	// const [id] = await db('supporters').insert(sup);
 
