@@ -2,6 +2,7 @@ exports.seed = async function(knex) {
 	await knex('campaigns').insert([
 		{
 			title: 'Support The River Otters',
+			animal: 'river otter',
 			description: 'Highly valued for their pelts',
 			urgency_level: 'Critical',
 			location: 'Indiana',
@@ -11,6 +12,7 @@ exports.seed = async function(knex) {
 		},
 		{
 			title: 'Seahorses Unite!',
+			animal: 'seahorse',
 			description: 'High demand for traditional Chinese medicine market and aquarium trade',
 			urgency_level: 'Critical',
 			location: 'South Africa',
@@ -20,6 +22,7 @@ exports.seed = async function(knex) {
 		},
 		{
 			title: 'Save The Creeps',
+			animal: 'tarantula',
 			description: 'Highly sought by insect collectors for exotic pet trade',
 			urgency_level: 'Critical',
 			location: 'Sri Lanka',
@@ -29,6 +32,7 @@ exports.seed = async function(knex) {
 		},
 		{
 			title: "Save The Koala's",
+			animal: 'koala',
 			description: 'Raging fires that are still buring',
 			urgency_level: 'Critical',
 			location: 'Australia',
