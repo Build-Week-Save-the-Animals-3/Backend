@@ -1,10 +1,10 @@
 const express = require('express');
-const restricted = require('../middleware/restricted');
+const auth = require('../middleware/auth');
 const suppsModel = require('./supps-model');
 
 const router = express.Router();
 
-router.get('/supporters', restricted(), async (req, res, next) => {
+router.get('/supporters', auth(), async (req, res, next) => {
 	try {
 		const orgs = await suppsModel.find();
 

@@ -61,7 +61,7 @@ router.get('/protected', restricted(), async (req, res, next) => {
 	}
 });
 
-router.post('/suppporters/register',  async (req, res, next) => {
+router.post('/supps/register',  async (req, res, next) => {
 	try {
 		const saved = await suppsModel.add(req.body);
 
@@ -71,11 +71,11 @@ router.post('/suppporters/register',  async (req, res, next) => {
 	}
 });
 
-router.post('/supporters/login', async (req, res, next) => {
+router.post('/supps/login', async (req, res, next) => {
 	try {
 		const { email, password } = req.body;
 		const supps = await suppsModel.findBy({ email }).first();
-		const pwValid = await bcrypt.compare(password, user.password);
+		const pwValid = await bcrypt.compare(password, supps.password);
 
 		if (supps && pwValid) {
 			const token = jwt.sign(
@@ -107,7 +107,7 @@ router.get('/supporters/protected', restricted(), async (req, res, next) => {
 	try {
 		res.json({
 			message: 'You are authorized',
-			suppsId: req.suppsId,
+			suppsId: req.userId,
 		});
 	} catch (err) {
 		next(err);

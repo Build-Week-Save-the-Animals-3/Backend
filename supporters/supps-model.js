@@ -13,11 +13,10 @@ function findBy(sup) {
 
 async function add(sup) {
 	sup.password = await bcrypt.hash(sup.password, 14);
-	// sqlite 
-	const [id] = await db('supporters')
-		.insert(sup)
+	// sqlite
+	const [id] = await db('supporters').insert(sup);
 
-		return findSupById(id)
+	return findById(id);
 	// return db('supporters')
 	// 	.insert(sup)
 	// 	.returning('*');

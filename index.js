@@ -5,6 +5,7 @@ const cors = require('cors');
 const campRouter = require('./campaigns/campaigns-router');
 const authRouter = require('./auth/auth-router');
 const usersRouter = require('./users/users-router');
+const suppsRouter = require('./supporters/supps-router');
 
 const server = express();
 const port = process.env.PORT || 8000;
@@ -17,6 +18,7 @@ server.use(express.json());
 server.use('/auth', authRouter);
 server.use('/api', campRouter);
 server.use('/users', usersRouter);
+server.use('/supps', suppsRouter);
 
 server.get('/', (req, res) => {
 	res.json({
