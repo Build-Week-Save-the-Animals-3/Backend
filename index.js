@@ -7,7 +7,7 @@ const authRouter = require('./auth/auth-router');
 const usersRouter = require('./users/users-router');
 
 const server = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8000;
 
 server.use(helmet());
 server.use(cors());

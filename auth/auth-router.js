@@ -7,7 +7,7 @@ const secret = require('../config/secret');
 
 const router = express.Router();
 
-router.post('/users/register', async (req, res, next) => {
+router.post('/register', async (req, res, next) => {
 	try {
 		const saved = await usersModel.addOrg(req.body);
 
@@ -17,17 +17,17 @@ router.post('/users/register', async (req, res, next) => {
 	}
 });
 
-router.post('/users/login', async (req, res, next) => {
+router.post('/login', async (req, res, next) => {
 	try {
-		const { username, password } = req.body;
-		const user = await usersModel.findOrgsBy({ username }).first();
+		const { name, password } = req.body;
+		const user = await usersModel.findOrgsBy({ name }).first();
 		const pwValid = await bcrypt.compare(password, user.password);
 
 		if (user && pwValid) {
 			const token = jwt.sign(
 				{
 					subject: user.id,
-					username: user.username,
+					username: user.name,
 				},
 				secret.jwt,
 				{
@@ -36,7 +36,7 @@ router.post('/users/login', async (req, res, next) => {
 			);
 
 			res.status(200).json({
-				message: `Welcome ${user.username}!`,
+				message: `Welcome ${user.name}!`,
 				token: token,
 			});
 		} else {
