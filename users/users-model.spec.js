@@ -7,17 +7,12 @@ beforeAll(async () => {
 
 describe('users model', () => {
 	test('find orgs', async () => {
-		const res = await usersModel.findOrgs();
+		const res = await usersModel.find();
 		expect(res).toHaveLength(4);
 	});
 
 	test('find orgs by id', async () => {
-		const res = await usersModel.findOrgById(1);
+		const res = await usersModel.findById(1);
 		expect(res.name).toBe('Best Friends First');
-	});
-
-	test('find sups', async () => {
-		const res = await usersModel.findSups();
-		expect(res).toHaveLength(2);
 	});
 });

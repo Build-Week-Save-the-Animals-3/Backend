@@ -1,12 +1,12 @@
 const express = require('express');
-// const restricted = require('../middleware/restricted');
+const restricted = require('../middleware/restricted');
 const usersModel = require('./users-model');
 
 const router = express.Router();
 
-router.get('/', async (req, res, next) => {
+router.get('/', restricted(), async (req, res, next) => {
 	try {
-		const orgs = await usersModel.findOrgs();
+		const orgs = await usersModel.find();
 
 		res.json(orgs);
 	} catch (err) {
@@ -14,31 +14,14 @@ router.get('/', async (req, res, next) => {
 	}
 });
 
-router.get('/:userId', async (req, res, next) => {
-	try {
-		const { id } = req.params;
-		const user = await usersModel.findOrgById(id);
+// router.get('/supporters', restricted(), async (req, res, next) => {
+// 	try {
+// 		const sups = await usersModel.find();
 
-		if (user) {
-			res.json(user);
-		} else {
-			res.status(404).json({
-				message: 'The organizations user with the specified ID does not exist',
-			});
-		}
-	} catch (err) {
-		next(err);
-	}
-});
-
-router.get('/supporters', async (req, res, next) => {
-	try {
-		const sups = await usersModel.findSups();
-
-		res.json(sups);
-	} catch (err) {
-		next(err);
-	}
-});
+// 		res.json(sups);
+// 	} catch (err) {
+// 		next(err);
+// 	}
+// });
 
 module.exports = router;
