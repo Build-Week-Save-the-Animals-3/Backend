@@ -5,123 +5,130 @@ https://dbdesigner.page.link/yUFqPqgSfJhGT43a8
 Welcome Route- https://ptbw-sta-3.herokuapp.com/
 returns:
 Status: 200 OK
-{
-"message": "Welcome to Save The Animals API"
-}
+  {
+    "message": "Welcome to Save The Animals API"
+  }
+
 GET Camps- https://ptbw-sta-3.herokuapp.com/api/campaigns
 returns:
 Status: 200 OK
 [
-{
-"id": 2,
-"title": "Seahorses Unite!",
-"description": "High demand for traditional Chinese medicine market and aquarium trade",
-"urgency_level": "Critical",
-"location": "South Africa",
-"deadline": "2025-10-06T00:00:00.000Z",
-"fund_goal": 25000,
-"completed": true
-},
+  {
+    "id": 2,
+    "title": "Seahorses Unite!",
+    "description": "High demand for traditional Chinese medicine market and aquarium trade",
+    "urgency_level": "Critical",
+    "location": "South Africa",
+    "deadline": "2025-10-06T00:00:00.000Z",
+    "fund_goal": 25000,
+    "completed": true
+  },
 ]
+
 GET Camp by ID- https://ptbw-sta-3.herokuapp.com/api/campaigns/1
 returns:
 Status: 200 OK
-{
-"id": 1,
-"title": "Support The River Otters",
-"description": "Highly valued for their pelts",
-"urgency_level": "Critical",
-"location": "Indiana",
-"deadline": "2025-05-19T00:00:00.000Z",
-"fund_goal": 15000,
-"completed": false
-}
+  {
+    "id": 1,
+    "title": "Support The River Otters",
+    "description": "Highly valued for their pelts",
+    "urgency_level": "Critical",
+    "location": "Indiana",
+    "deadline": "2025-05-19T00:00:00.000Z",
+    "fund_goal": 15000,
+    "completed": false
+  }
+
 GET Orgs- https://ptbw-sta-3.herokuapp.com/api/organizations
 returns:
 Status: 200 OK
 [
-{
-"id": 1,
-"name": "Best Friends First",
-"username": "BFF",
-"password": "FriendsF!rst"
-},
+  {
+    "id": 1,
+    "name": "Best Friends First",
+    "username": "BFF"
+  },
 ]
+
 GET Dons- https://ptbw-sta-3.herokuapp.com/api/donations
 returns:
 Status: 200 OK
 [
-{
-"id": 1,
-"amount": 100
-},
+  {
+    "id": 1,
+    "amount": 100
+  },
 ]
+
 GET Dons by ID- https://ptbw-sta-3.herokuapp.com/api/donations/1
 returns:
 Status: 200 OK
-{
-"id": 1,
-"amount": 100
-}
+  {
+    "id": 1,
+    "amount": 100
+  }
+  
 POST Camps- https://ptbw-sta-3.herokuapp.com/api/campaigns
 requires: JSON body-
-{
-"title": "test",
-"description": "test",
-"urgency_level": "Critical",
-"location": "test",
-"deadline": "2025-05-19",
-"fund_goal": 15000,
-"completed": 0
-}
+  {
+    "title": "test",
+    "description": "test",
+    "urgency_level": "Critical",
+    "location": "test",
+    "deadline": "2025-05-19",
+    "fund_goal": 15000,
+    "completed": 0
+  }
 
 returns:
 Status: 201 Created
-{
-"id": 5,
-"title": "test1",
-"description": "testing1",
-"urgency_level": "Critical",
-"location": "testing1",
-"deadline": "2025-05-19",
-"fund_goal": 130000,
-"completed": 0
-}
+  {
+    "id": 5,
+    "title": "test1",
+    "description": "testing1",
+    "urgency_level": "Critical",
+    "location": "testing1",
+    "deadline": "2025-05-19",
+    "fund_goal": 130000,
+    "completed": 0
+  }
+  
 POST Dons- https://ptbw-sta-3.herokuapp.com/api/donations
 requires: JSON body-
-{
-"amount": 15,
-}
+  {
+    "amount": 15,
+  }
 
 returns:
 Status: 201 Created
-{
-"id": 5,
-"amount": 15,
-}
+  {
+    "id": 5,
+    "amount": 15,
+  }
+  
 PUT Camps by ID- https://ptbw-sta-3.herokuapp.com/api/campaigns/1
 requires: JSON body- with updated item(s)
-{
-"title": "Support the River Otters",
-"description": "Highly valued for their pelts",
-"urgency_level": "Critical",
-"location": "Indiana",
-"deadline": "2025-05-19",
-"fund_goal": 15000,
-"completed": true
-}
+  {
+    "title": "Support the River Otters",
+    "description": "Highly valued for their pelts",
+    "urgency_level": "Critical",
+    "location": "Indiana",
+    "deadline": "2025-05-19",
+    "fund_goal": 15000,
+    "completed": true
+  }
 
 returns:
 Status: 200 OK
-{
-"title": "Support the River Otters",
-"description": "Highly valued for their pelts",
-"urgency_level": "Critical",
-"location": "Indiana",
-"deadline": "2025-05-19",
-"fund_goal": 15000,
-"completed": true
-}
+  {
+    "title": "Support the River Otters",
+    "description": "Highly valued for their pelts",
+    "urgency_level": "Critical",
+    "location": "Indiana",
+    "deadline": "2025-05-19",
+    "fund_goal": 15000,
+    "completed": true
+  }
 
 DELETE Camps- https://ptbw-sta-3.herokuapp.com/api/campaigns/1
 returns:
@@ -130,9 +137,9 @@ No body returned for response
 Status: 204 No Content
 
 Calling Non-Existing:
-{
-"message": "The campaign with the specified ID does not exist"
-}
+  {
+    "message": "The campaign with the specified ID does not exist"
+  }
 
 Save the Animals
 PITCH
