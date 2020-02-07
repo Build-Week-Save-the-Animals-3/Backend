@@ -46,7 +46,7 @@ test('get users', async () => {
 
 // GET Sups users
 test('get supporters', async () => {
-	const res = await supertest(server).get('/supporters');
+	const res = await supertest(server).get('/supps/supporters');
 	expect(res.status).toBe(200);
 	expect(res.type).toBe('application/json');
 });

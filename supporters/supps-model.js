@@ -2,13 +2,13 @@ const bcrypt = require('bcryptjs');
 const db = require('../data/db-config');
 
 function find() {
-	return db('supporters').select('id', 'email');
+	return db('supporters').select('id', 'name');
 }
 
 function findBy(sup) {
 	return db('supporters')
 		.where(sup)
-		.select('id', 'email', 'password');
+		.select('id', 'name', 'password');
 }
 
 async function add(sup) {
@@ -26,7 +26,7 @@ async function add(sup) {
 function findById(id) {
 	return db('supporters')
 		.where({ id })
-		.first('id', 'email');
+		.first('id', 'name');
 }
 
 module.exports = {
