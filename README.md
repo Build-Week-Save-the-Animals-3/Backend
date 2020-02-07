@@ -132,7 +132,7 @@ Status: 200 OK
 
 DELETE Camps- https://ptbw-sta-3.herokuapp.com/api/campaigns/1
 returns:
-No body returned for response
+	No body returned for response
 
 Status: 204 No Content
 
