@@ -14,7 +14,7 @@ function findBy(org) {
 function add(org) {
 	org.password = bcrypt.hash(org.password, 14);
  // sqlite 
-	const [id] = await db('organizations')
+	// const [id] = await db('organizations')
 	// 	.insert(org)
 
 	// return findById(id)

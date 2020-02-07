@@ -14,14 +14,4 @@ router.get('/', restricted(), async (req, res, next) => {
 	}
 });
 
-// router.get('/supporters', restricted(), async (req, res, next) => {
-// 	try {
-// 		const sups = await usersModel.find();
-
-// 		res.json(sups);
-// 	} catch (err) {
-// 		next(err);
-// 	}
-// });
-
 module.exports = router;
