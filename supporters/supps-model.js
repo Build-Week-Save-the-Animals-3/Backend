@@ -11,15 +11,16 @@ function findBy(sup) {
 		.select('id', 'email', 'password');
 }
 
-async function add(sup) {
-	sup.password = await bcrypt.hash(sup.password, 14);
+function add(sup) {
+	sup.password = bcrypt.hash(sup.password, 14);
 	// sqlite
-	const [id] = await db('supporters').insert(sup);
+	// const [id] = await db('supporters').insert(sup);
 
-	return findById(id);
-	// return db('supporters')
-	// 	.insert(sup)
-	// 	.returning('*');
+	// return findById(id);
+	// pg
+	return db('supporters')
+		.insert(sup)
+		.returning('*');
 }
 
 function findById(id) {
