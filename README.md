@@ -1,28 +1,36 @@
 # Backend
 
-https://dbdesigner.page.link/yUFqPqgSfJhGT43a8
+**https://dbdesigner.page.link/yUFqPqgSfJhGT43a8
 
-Welcome Route- https://ptbw-sta-3.herokuapp.com/
+## API documentation
+
+## Welcome Route- 
+- [] https://ptbw-sta-3.herokuapp.com/
+- [] returns:
+- [] Status: 200 OK
+```js
+  {
+    "message": "Welcome to Save The Animals API"
+  }
+```
+## GET Camps- 
+-[] https://ptbw-sta-3.herokuapp.com/api/campaigns
 returns:
 Status: 200 OK
-{
-"message": "Welcome to Save The Animals API"
-}
-GET Camps- https://ptbw-sta-3.herokuapp.com/api/campaigns
-returns:
-Status: 200 OK
+```js
 [
-{
-"id": 2,
-"title": "Seahorses Unite!",
-"description": "High demand for traditional Chinese medicine market and aquarium trade",
-"urgency_level": "Critical",
-"location": "South Africa",
-"deadline": "2025-10-06T00:00:00.000Z",
-"fund_goal": 25000,
-"completed": true
-},
+  {
+    "id": 2,
+    "title": "Seahorses Unite!",
+    "description": "High demand for traditional Chinese medicine market and aquarium trade",
+    "urgency_level": "Critical",
+    "location": "South Africa",
+    "deadline": "2025-10-06T00:00:00.000Z",
+    "fund_goal": 25000,
+    "completed": true
+  },
 ]
+```
 GET Camp by ID- https://ptbw-sta-3.herokuapp.com/api/campaigns/1
 returns:
 Status: 200 OK
