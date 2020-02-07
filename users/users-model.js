@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const db = require('../data/db-config');
 
 function findOrgs() {
-	return db('users').select('id', 'username');
+	return db('organizations').select('id', 'name');
 }
 
 function findSups() {
@@ -10,9 +10,9 @@ function findSups() {
 }
 
 function findOrgsBy(filter) {
-	return db('users')
+	return db('organizations')
 		.where(filter)
-		.select('id', 'username', 'password', 'org_id');
+		.select('id', 'name', 'password');
 }
 
 function findSupsBy(filter) {
@@ -22,9 +22,9 @@ function findSupsBy(filter) {
 }
 
 function findOrgById(id) {
-	return db('users')
+	return db('organizations')
 		.where({ id })
-		.first('id', 'username');
+		.first('id', 'name');
 }
 
 function findSupById(id) {
@@ -35,7 +35,7 @@ function findSupById(id) {
 
 function addOrg(org) {
 	org.password = bcrypt.hash(org.password, 14)
-	return db('users')
+	return db('organizations')
 		.insert(org)
 		.returning('*');
 }

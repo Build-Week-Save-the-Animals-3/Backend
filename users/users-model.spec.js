@@ -13,7 +13,7 @@ describe('users model', () => {
 
 	test('find orgs by id', async () => {
 		const res = await usersModel.findOrgById(1)
-		expect(res.username).toBe('BFF')
+		expect(res.name).toBe('Best Friends First')
 	})
 
 	test('find sups', async () => {
