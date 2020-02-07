@@ -12,7 +12,6 @@ function findCampaigns() {
 	});
 }
 
-// asdfa?
 function findOrganizations() {
 	return db('organizations').select();
 }
