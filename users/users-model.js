@@ -1,59 +1,66 @@
 const bcrypt = require('bcryptjs');
 const db = require('../data/db-config');
 
-function findOrgs() {
+function find() {
 	return db('organizations').select('id', 'name');
 }
 
-function findSups() {
-	return db('supporters').select('id', 'email');
-}
+// function find() {
+// 	return db('supporters').select('id', 'email');
+// }
 
-function findOrgsBy(filter) {
+function findBy(org) {
 	return db('organizations')
-		.where(filter)
+		.where(org)
 		.select('id', 'name', 'password');
 }
 
-function findSupsBy(filter) {
-	return db('supporters')
-		.where(filter)
-		.select('id', 'email', 'password');
+// function findBy(sup) {
+// 	return db('supporters')
+// 		.where(sup)
+// 		.select('id', 'email', 'password');
+// }
+
+async function add(org) {
+	org.password = await bcrypt.hash(org.password, 14);
+ // sqlite 
+	const [id] = await db('organizations')
+		.insert(org)
+
+	return findById(id)
+	// pg
+	// return db('organizations')
+	// 	.insert(org)
+	// 	.returning('*');
 }
 
-function findOrgById(id) {
+// async function add(sup) {
+// 	sup.password = await bcrypt.hash(sup.password, 14);
+// 	// sqlite 
+// 	const [id] = await db('supporters')
+// 		.insert(sup)
+
+// 		return findSupById(id)
+// 	// return db('supporters')
+// 	// 	.insert(sup)
+// 	// 	.returning('*');
+// }
+
+function findById(id) {
 	return db('organizations')
 		.where({ id })
 		.first('id', 'name');
 }
 
-function findSupById(id) {
-	return db('supporters')
-		.where({ id })
-		.first('id', 'email');
-}
-
-function addOrg(org) {
-	org.password = bcrypt.hash(org.password, 14);
-	return db('organizations')
-		.insert(org)
-		.returning('*');
-}
-
-function addSup(sup) {
-	sup.password = bcrypt.hash(sup.password, 14);
-	return db('supporters')
-		.insert(sup)
-		.returning('*');
-}
+// function findById(id) {
+// 	return db('supporters')
+// 		.where({ id })
+// 		.first('id', 'email');
+// }
 
 module.exports = {
-	findOrgs,
-	findSups,
-	findOrgsBy,
-	findSupsBy,
-	findOrgById,
-	findSupById,
-	addOrg,
-	addSup,
+	find,
+	findBy,
+	findById,
+	add,
 };
