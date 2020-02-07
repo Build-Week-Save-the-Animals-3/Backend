@@ -34,14 +34,14 @@ function findSupById(id) {
 }
 
 function addOrg(org) {
-	org.password = bcrypt.hash(org.password, 14)
+	org.password = bcrypt.hash(org.password, 14);
 	return db('organizations')
 		.insert(org)
 		.returning('*');
 }
 
 function addSup(sup) {
-	sup.password = bcrypt.hash(sup.password, 14)
+	sup.password = bcrypt.hash(sup.password, 14);
 	return db('supporters')
 		.insert(sup)
 		.returning('*');

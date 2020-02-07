@@ -12,9 +12,9 @@ describe('users model', () => {
 	});
 
 	test('find orgs by id', async () => {
-		const res = await usersModel.findOrgById(1)
-		expect(res.name).toBe('Best Friends First')
-	})
+		const res = await usersModel.findOrgById(1);
+		expect(res.name).toBe('Best Friends First');
+	});
 
 	test('find sups', async () => {
 		const res = await usersModel.findSups();
