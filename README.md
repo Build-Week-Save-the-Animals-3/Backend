@@ -19,6 +19,136 @@
     "message": "Welcome to Save The Animals API"
   }
 ```
+## POST (Create) Register Organization:
+  - https://ptbw-sta-3.herokuapp.com/auth/users/register
+  - requires: JSON body below.
+```js
+  {
+    "name": "test", // string
+    "password": "test12345" // string
+  }
+```
+
+# Success Response:
+```js
+  [
+    {
+      "id": 8,
+      "name": "test",
+      "password": "$2a$14$OVBlARPiSIZlWjSzXNQDHO91YoKmiY/F6UC42Vo5f2JUCXaMDb0Sq"
+    }
+  ]
+```
+
+## POST Login Organization:
+  - https://ptbw-sta-3.herokuapp.com/auth/users/login
+  - requires: JSON body below.
+```js
+    {
+      "name": "test", // string
+      "password": "test12345" // string
+    }
+```
+
+# Success Response: 
+```js
+  {
+    "message": "Welcome test!",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo3LCJuYW1lIjoiZGFuaWVsbGUiLCJpYXQiOjE1ODEwOTg4OTcsImV4cCI6MTU4MTUzMDg5N30.jqEwE8y-4ZdJlQHbQdXqu68Au57j5Q0ya9uBAEI4B5c"
+  }
+```
+
+## Protected Routes
+## GET (Find) Organization Users
+  - https://ptbw-sta-3.herokuapp.com/users
+  - Requires Authorization Header + token from logging in to access
+
+# Success Response:
+```js
+  [
+    {
+      "id": 5,
+      "name": "test1"
+    },
+    {
+      "id": 6,
+      "name": "test2"
+    },
+  ]
+```
+
+# Error Response:
+```js
+  {
+    "message": "Invalid credentials"
+  }
+```
+
+## POST (Create) Register Supporters:
+  - https://ptbw-sta-3.herokuapp.com/auth/supps/register
+  - requires: JSON body below.
+```js
+  {
+    "email": "test@test.com", // string
+    "password": "test" // string
+  }
+```
+
+# Success Response:
+```js
+[
+  {
+    "id": 5,
+    "email": "test@test.com",
+    "password": "$2a$14$x8CurbeU9qAvScaOMmVkJO71pU2aA19QfmAYdZUhBWAh7uQ/Xmwpi"
+  }
+]
+```
+
+## POST Login Supporters:
+  - https://ptbw-sta-3.herokuapp.com/auth/supps/login
+  - requires: JSON body below.
+```js
+    {
+      "email": "test@test.com", // string
+      "password": "test12345" // string
+    }
+```
+
+# Success Response: 
+```js
+  {
+    "message": "Welcome test@test.com!",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo3LCJuYW1lIjoiZGFuaWVsbGUiLCJpYXQiOjE1ODEwOTg4OTcsImV4cCI6MTU4MTUzMDg5N30.jqEwE8y-4ZdJlQHbQdXqu68Au57j5Q0ya9uBAEI4B5c"
+  }
+```
+
+## Protected Routes
+## GET (Find) Supporter Users
+  - https://ptbw-sta-3.herokuapp.com/supps/supporters
+  - Requires Authorization Header + token from logging in to access
+
+# Success Response:
+```js
+  [
+    {
+      "id": 1,
+      "email": "jane@doe.com"
+    },
+    {
+      "id": 2,
+      "email": "john@done.com"
+    },
+  ]
+```
+
+# Error Response:
+```js
+  {
+    "message": "Invalid credentials"
+  }
+```
+
 ## GET (Find) Campaigns- 
   - https://ptbw-sta-3.herokuapp.com/api/campaigns
 
@@ -180,17 +310,19 @@
   }
 ```
 
-## DELETE Campaigns- 
+## DELETE Campaign by ID- 
   - https://ptbw-sta-3.herokuapp.com/api/campaigns/1
 
 # Success Response:
-  ```js
-    No body returned for response
-  ```
+```js
+  No body returned for response
+```
 # Error Response:
-{
-  "message": "The campaign with the specified ID does not exist"
-}
+```js
+  {
+    "message": "The campaign with the specified ID does not exist"
+  }
+```
 
 ## Save the Animals
 # PITCH
