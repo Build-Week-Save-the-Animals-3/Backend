@@ -34,6 +34,7 @@ describe('campaigns model', () => {
 	test('add camps', async () => {
 		await campsModel.addCampaigns({
 			title: 'test',
+			animal: 'testing',
 			description: 'testing',
 			urgency_level: 'Critical',
 			location: 'testing',
