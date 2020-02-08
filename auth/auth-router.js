@@ -1,7 +1,6 @@
 const bcrypt = require('bcryptjs');
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const restricted = require('../middleware/restricted');
 const usersModel = require('../users/users-model');
 const suppsModel = require('../supporters/supps-model')
 const secret = require('../config/secret');
@@ -50,16 +49,17 @@ router.post('/users/login', async (req, res, next) => {
 	}
 });
 
-router.get('/protected', restricted(), async (req, res, next) => {
-	try {
-		res.json({
-			message: 'You are authorized',
-			userId: req.userId,
-		});
-	} catch (err) {
-		next(err);
-	}
-});
+// not needed due to restricted on /users route
+// router.get('/protected', restricted(), async (req, res, next) => {
+// 	try {
+// 		res.json({
+// 			message: 'You are authorized',
+// 			userId: req.userId,
+// 		});
+// 	} catch (err) {
+// 		next(err);
+// 	}
+// });
 
 router.post('/supps/register',  async (req, res, next) => {
 	try {
@@ -103,16 +103,17 @@ router.post('/supps/login', async (req, res, next) => {
 	}
 });
 
-router.get('/supporters/protected', restricted(), async (req, res, next) => {
-	try {
-		res.json({
-			message: 'You are authorized',
-			suppsId: req.userId,
-		});
-	} catch (err) {
-		next(err);
-	}
-});
+// not needed due to restriction on /supps/supporters route
+// router.get('/supporters/protected', restricted(), async (req, res, next) => {
+// 	try {
+// 		res.json({
+// 			message: 'You are authorized',
+// 			suppsId: req.userId,
+// 		});
+// 	} catch (err) {
+// 		next(err);
+// 	}
+// });
 
 
 module.exports = router;
