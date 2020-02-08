@@ -11,17 +11,17 @@ describe('Supporters model', () => {
 		expect(res).toHaveLength(2);
 	});
 
-// 	test('find supporters by id', async () => {
-// 		const res = await suppsModel.findById(1);
-// 		expect(res.name).toBe('jane@doe.com');
-// 	});
+	test('find supporters by id', async () => {
+		const res = await suppsModel.findById(1);
+		expect(res.name).toBe('jane@doe.com');
+	});
 
-// 	test('register supporter ', async () => {
-// 		await suppsModel.add({
-// 			name: 'test',
-// 			password: 'testing',
-// 		});
-// 		const supporter = await db('supporters').select();
-// 		expect(supporter).toHaveLength(3);
-// 	});
+	test('register new supporter ', async () => {
+		await suppsModel.add({
+			name: 'test1@gmail.com',
+			password: 't1gm',
+		});
+		const supporter = await db('supporters').select();
+		expect(supporter).toHaveLength(3);
+	});
 });

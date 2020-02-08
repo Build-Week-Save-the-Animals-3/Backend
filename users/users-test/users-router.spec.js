@@ -11,10 +11,10 @@ beforeAll(async () => {
 
 // testing end-points of users router
 test('GET /users', async () => {
-  const res = await supertest(server)
-    .get('/users')
-    .set({ Authorization: userToken})
-    expect(res.status).toBe(200);
-    expect(res.type).toBe('application/json')
-    expect(res.body.length).toBe(4)
-})
+	const res = await supertest(server)
+		.get('/users')
+		.set({ Authorization: userToken });
+	expect(res.status).toBe(200);
+	expect(res.type).toBe('application/json');
+	expect(res.body.length).toBe(4);
+});

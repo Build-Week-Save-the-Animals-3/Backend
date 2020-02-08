@@ -17,10 +17,10 @@ describe('campaigns model', () => {
 		expect(res.title).toBe('Support The River Otters');
 	});
 
-	// test('find orgs', async () => {
-	// 	const res = await campsModel.findOrganizations();
-	// 	expect(res).toHaveLength(4);
-	// });
+	test('find orgs', async () => {
+		const res = await campsModel.findOrganizations();
+		expect(res).toHaveLength(4);
+	});
 
 	test('find dons', async () => {
 		const res = await campsModel.findDonations();

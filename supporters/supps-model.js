@@ -11,6 +11,12 @@ function findBy(sup) {
 		.select('id', 'name', 'password');
 }
 
+function findById(id) {
+	return db('supporters')
+		.where({ id })
+		.first();
+}
+
 async function add(sup) {
 	sup.password = await bcrypt.hash(sup.password, 14);
 	// sqlite
@@ -21,12 +27,6 @@ async function add(sup) {
 	return db('supporters')
 		.insert(sup)
 		.returning('*');
-}
-
-function findById(id) {
-	return db('supporters')
-		.where({ id })
-		.first('id', 'name');
 }
 
 module.exports = {
