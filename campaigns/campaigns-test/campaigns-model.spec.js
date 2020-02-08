@@ -1,5 +1,5 @@
-const db = require('../data/db-config');
-const campsModel = require('./campaigns-model');
+const db = require('../../data/db-config');
+const campsModel = require('../campaigns-model');
 
 beforeAll(async () => {
 	await db.seed.run();
