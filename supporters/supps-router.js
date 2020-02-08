@@ -6,9 +6,9 @@ const router = express.Router();
 
 router.get('/supporters', auth(), async (req, res, next) => {
 	try {
-		const orgs = await suppsModel.find();
+		const supps = await suppsModel.find();
 
-		res.json(orgs);
+		res.json(supps);
 	} catch (err) {
 		next(err);
 	}
