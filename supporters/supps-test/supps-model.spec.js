@@ -24,4 +24,4 @@ describe('Supporters model', () => {
 // 		const supporter = await db('supporters').select();
 // 		expect(supporter).toHaveLength(3);
 // 	});
-// });
+});
