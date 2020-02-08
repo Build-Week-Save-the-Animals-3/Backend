@@ -53,7 +53,16 @@ describe('campaigns model', () => {
 	});
 
 	test('update camps', async () => {
-		await campsModel.updateCampaign(1, { title: 'Support The River Otters', location: 'Indiana' });
+		await campsModel.updateCampaign(1, {
+			title: 'Support The River Otters',
+			animal: 'River Otter',
+			description: 'Highly valued for their pelts',
+			urgency_level: 'Critical',
+			location: 'Indiana',
+			deadline: '2025-05-19',
+			fund_goal: 15000,
+			completed: 0,
+		});
 		const camp = await campsModel.findCampById(1);
 		expect(camp.title).toBe('Support The River Otters');
 		expect(camp.location).toBe('Indiana');

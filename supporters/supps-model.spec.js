@@ -17,7 +17,7 @@ describe('Supporters model', () => {
 	});
 
 	test('register supporter ', async () => {
-		await campsModel.add({
+		await suppsModel.add({
 			name: 'test',
 			password: 'testing',
 		});
