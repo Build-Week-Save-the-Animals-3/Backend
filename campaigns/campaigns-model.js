@@ -33,20 +33,22 @@ function findDonsById(id) {
 }
 
 function addCampaigns(campaign) {
-	return db('campaigns').insert(campaign);
-	// .returning('*');
+	return db('campaigns')
+		.insert(campaign)
+		.returning('*');
 }
 
 function addDonations(donate) {
-	return db('donations').insert(donate);
-	// .returning('*');
+	return db('donations')
+		.insert(donate)
+		.returning('*');
 }
 
 function updateCampaign(id, changes) {
 	return db('campaigns')
 		.where({ id })
-		.update(changes);
-	// .returning('*');
+		.update(changes)
+		.returning('*');
 }
 
 function deleteCampaign(id) {
