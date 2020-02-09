@@ -5,9 +5,9 @@ function find() {
 	return db('organizations').select('id', 'name');
 }
 
-function findBy(org) {
+function findBy(filter) {
 	return db('organizations')
-		.where(org)
+		.where(filter)
 		.select('id', 'name', 'password');
 }
 
@@ -19,7 +19,7 @@ function findById(id) {
 
 async function add(org) {
 	org.password = await bcrypt.hash(org.password, 14);
- // sqlite 
+	// sqlite
 	// const [id] = await db('organizations')
 	// 	.insert(org)
 

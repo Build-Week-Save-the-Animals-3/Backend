@@ -28,14 +28,14 @@ router.get('/campaigns/:id', async (req, res, next) => {
 	}
 });
 
-router.get('/organizations', async (req, res, next) => {
-	try {
-		const orgs = await campModel.findOrganizations();
-		res.json(orgs);
-	} catch (err) {
-		next(err);
-	}
-});
+// router.get('/organizations', async (req, res, next) => {
+// 	try {
+// 		const orgs = await campModel.findOrganizations();
+// 		res.json(orgs);
+// 	} catch (err) {
+// 		next(err);
+// 	}
+// });
 
 router.get('/donations', async (req, res, next) => {
 	try {

@@ -60,12 +60,12 @@ test('DELETE /api/campaigns/:id route', async () => {
 	expect(res.type).toBe('');
 });
 
-test('GET /api/organizations route', async () => {
-	const res = await supertest(server).get('/api/organizations');
-	expect(res.status).toBe(200);
-	expect(res.type).toBe('application/json');
-	expect(res.body.length).toBe(4);
-});
+// test('GET /api/organizations route', async () => {
+// 	const res = await supertest(server).get('/api/organizations');
+// 	expect(res.status).toBe(200);
+// 	expect(res.type).toBe('application/json');
+// 	expect(res.body.length).toBe(4);
+// });
 
 test('GET /api/donations route', async () => {
 	const res = await supertest(server).get('/api/donations');

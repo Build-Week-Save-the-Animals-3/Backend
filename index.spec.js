@@ -7,8 +7,8 @@ beforeAll(async () => {
 });
 
 // welcome route
-test('GET / welcome route', async () => {
-	const res = await supertest(server).get('/');
+test('GET /welcome route', async () => {
+	const res = await supertest(server).get('/welcome');
 	expect(res.status).toBe(200);
 	expect(res.type).toBe('application/json');
 	expect(res.body.message).toMatch('Welcome to Save The Animals API');

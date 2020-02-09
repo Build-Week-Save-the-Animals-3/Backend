@@ -20,7 +20,7 @@ server.use('/api', campRouter);
 server.use('/users', usersRouter);
 server.use('/supps', suppsRouter);
 
-server.get('/', (req, res) => {
+server.get('/welcome', (req, res) => {
 	res.json({
 		message: 'Welcome to Save The Animals API',
 	});

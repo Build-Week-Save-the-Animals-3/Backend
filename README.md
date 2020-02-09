@@ -11,7 +11,7 @@
 ## API documentation
 
 ## Welcome Route- 
-  - https://ptbw-sta-3.herokuapp.com/
+  - https://ptbw-sta-3.herokuapp.com/welcome
 
 # Success Response:
 ```js
@@ -89,7 +89,7 @@
   - requires: JSON body below.
 ```js
   {
-    "email": "test@test.com", // string
+    "name": "test@test.com", // string
     "password": "test" // string
   }
 ```
@@ -99,7 +99,7 @@
 [
   {
     "id": 5,
-    "email": "test@test.com",
+    "name": "test@test.com",
     "password": "$2a$14$x8CurbeU9qAvScaOMmVkJO71pU2aA19QfmAYdZUhBWAh7uQ/Xmwpi"
   }
 ]
@@ -110,7 +110,7 @@
   - requires: JSON body below.
 ```js
     {
-      "email": "test@test.com", // string
+      "name": "test@test.com", // string
       "password": "test12345" // string
     }
 ```
@@ -133,11 +133,11 @@
   [
     {
       "id": 1,
-      "email": "jane@doe.com"
+      "name": "jane@doe.com"
     },
     {
       "id": 2,
-      "email": "john@done.com"
+      "name": "john@done.com"
     },
   ]
 ```
@@ -198,7 +198,7 @@
   [
     {
       "id": 8,
-      "name": "klaus",
+      "name": "test1",
       "password": "$2a$14$OVBlARPiSIZlWjSzXNQDHO91YoKmiY/F6UC42Vo5f2JUCXaMDb0Sq"
     }
   ]
