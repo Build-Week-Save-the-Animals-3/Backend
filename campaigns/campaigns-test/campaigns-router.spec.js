@@ -20,6 +20,20 @@ test('GET /api/campaigns/:id route', async () => {
 	expect(res.body.id).toBe(1);
 });
 
+test('GET /api/donations route', async () => {
+	const res = await supertest(server).get('/api/donations');
+	expect(res.status).toBe(200);
+	expect(res.type).toBe('application/json');
+	expect(res.body.length).toBe(4);
+});
+
+test('GET /api/donations/:id route', async () => {
+	const res = await supertest(server).get('/api/donations/1');
+	expect(res.status).toBe(200);
+	expect(res.type).toBe('application/json');
+	expect(res.body.id).toBe(1);
+});
+
 test('POST /api/campaigns route', async () => {
 	const res = await supertest(server)
 		.post('/api/campaigns')
@@ -32,6 +46,16 @@ test('POST /api/campaigns route', async () => {
 			deadline: '2021-02-21',
 			fund_goal: 0,
 			completed: true,
+		});
+	expect(res.status).toBe(201);
+	expect(res.type).toBe('application/json');
+});
+
+test('POST /api/donations route', async () => {
+	const res = await supertest(server)
+		.post('/api/donations')
+		.send({
+			amount: 1,
 		});
 	expect(res.status).toBe(201);
 	expect(res.type).toBe('application/json');
@@ -66,27 +90,3 @@ test('DELETE /api/campaigns/:id route', async () => {
 // 	expect(res.type).toBe('application/json');
 // 	expect(res.body.length).toBe(4);
 // });
-
-test('GET /api/donations route', async () => {
-	const res = await supertest(server).get('/api/donations');
-	expect(res.status).toBe(200);
-	expect(res.type).toBe('application/json');
-	expect(res.body.length).toBe(4);
-});
-
-test('GET /api/donations/:id route', async () => {
-	const res = await supertest(server).get('/api/donations/1');
-	expect(res.status).toBe(200);
-	expect(res.type).toBe('application/json');
-	expect(res.body.id).toBe(1);
-});
-
-test('POST /api/donations route', async () => {
-	const res = await supertest(server)
-		.post('/api/donations')
-		.send({
-			amount: 1,
-		});
-	expect(res.status).toBe(201);
-	expect(res.type).toBe('application/json');
-});
