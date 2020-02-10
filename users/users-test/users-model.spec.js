@@ -19,8 +19,8 @@ describe('users model', () => {
 
 	test('register new org', async () => {
 		await usersModel.add({
-			name: 'test1',
-			password: 'test1',
+			name: 'admin',
+			password: 'admin',
 		});
 		const user = await db('organizations').select();
 		expect(user).toHaveLength(5);
