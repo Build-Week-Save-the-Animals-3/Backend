@@ -8,7 +8,7 @@ beforeAll(async () => {
 
 test('POST /users/register', async () => {
 	const res = await supertest(server)
-		.post('/users/register')
+		.post('/auth/users/register')
 		.send({
 			name: 'test123',
 			password: 'test123',
@@ -19,19 +19,19 @@ test('POST /users/register', async () => {
 
 test('POST /users/login', async () => {
 	const res = await supertest(server)
-		.post('/users/login')
+		.post('/auth/users/login')
 		.send({
-			name: '123test',
-			password: '123test',
+			name: 'test123',
+			password: 'test123',
 		});
 	expect(res.status).toBe(200);
 	expect(res.type).toBe('application/json');
-	expect(res.body.message).toMatch(/Welcome 123test/i);
+	expect(res.body.message).toMatch(/Welcome test123/i);
 });
 
 test('POST /supps/register', async () => {
 	const res = await supertest(server)
-		.post('/supps/register')
+		.post('/auth/supps/register')
 		.send({
 			name: 'test@1234.com',
 			password: '123test',
@@ -42,12 +42,12 @@ test('POST /supps/register', async () => {
 
 test('POST /supps/login', async () => {
 	const res = await supertest(server)
-		.post('/supps/login')
+		.post('/auth/supps/login')
 		.send({
-			name: '123@test.com',
-			password: '1t2e3s4t',
+			name: 'test@1234.com',
+			password: '123test',
 		});
 	expect(res.status).toBe(200);
 	expect(res.type).toBe('application/json');
-	expect(res.body.message).toMatch(/Welcome 123@test.com/i);
+	expect(res.body.message).toMatch(/Welcome test@1234.com/i);
 });

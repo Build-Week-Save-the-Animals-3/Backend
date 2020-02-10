@@ -19,8 +19,10 @@ router.post('/users/register',  async (req, res, next) => {
 
 router.post('/users/login', async (req, res, next) => {
 	try {
+		console.log(req.body)
 		const { name, password } = req.body;
 		const user = await usersModel.findBy({ name }).first();
+		console.log(user)
 		const pwValid = await bcrypt.compare(password, user.password);
 
 		if (user && pwValid) {
@@ -45,6 +47,7 @@ router.post('/users/login', async (req, res, next) => {
 			});
 		}
 	} catch (err) {
+		console.log(err)
 		next(err);
 	}
 });

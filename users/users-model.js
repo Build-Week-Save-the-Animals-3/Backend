@@ -6,6 +6,7 @@ function find() {
 }
 
 function findBy(filter) {
+	console.log(filter)
 	return db('organizations')
 		.where(filter)
 		.select('id', 'name', 'password');
