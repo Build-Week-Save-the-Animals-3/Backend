@@ -3,7 +3,7 @@ const server = require('../../index');
 const db = require('../../data/db-config');
 
 const userToken =
-	'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo1LCJuYW1lIjoidGVzdGluZyIsImlhdCI6MTU4MTE5MjA4OSwiZXhwIjoxNTgxNjI0MDg5fQ.I7q_dzf8EJfsG_49xRgmfvpvNkN_OFLzfkxyLYwEqbg';
+	'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo1LCJuYW1lIjoiYWRtaW4iLCJpYXQiOjE1ODEyOTYxNDIsImV4cCI6MTU4MTcyODE0Mn0.NCHgslUa2V5DaIG2fmlWaP6T3EjX50aU2FA8rg-Vodc';
 
 beforeAll(async () => {
 	await db.seed.run();

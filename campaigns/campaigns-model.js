@@ -12,9 +12,9 @@ function findCampaigns() {
 	});
 }
 
-function findOrganizations() {
-	return db('organizations').select();
-}
+// function findOrganizations() {
+// 	return db('organizations').select();
+// }
 
 function findDonations() {
 	return db('donations').select();
@@ -59,7 +59,7 @@ function deleteCampaign(id) {
 
 module.exports = {
 	findCampaigns,
-	findOrganizations,
+	// findOrganizations,
 	findDonations,
 	findCampById,
 	findDonsById,
